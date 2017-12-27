@@ -55,7 +55,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false" aria-haspopup="true">
                                 <img class="img-circle" src="{{Auth::user()->avatar}}" alt="{{ Auth::user()->name }}"
-                                     width="35px" height="35px"> {{ Auth::user()->name }} <span class="caret"></span>
+                                     width="25px" height="25px"> {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu">
@@ -96,7 +96,7 @@
 
                         @foreach($channels as $channel)
                             <li class="list-group-item">
-                                <a href="#">{{$channel->title}}</a>
+                                <a href="{{route('discussion.channel.show', ['id' => $channel->id])}}">{{$channel->title}}</a>
                             </li>
                         @endforeach
 

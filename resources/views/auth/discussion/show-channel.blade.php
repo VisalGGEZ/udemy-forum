@@ -28,16 +28,17 @@
                              height="40px"> &nbsp;
                         <span>
                             {{$discussion->user->name}}
-                             <b>{{$discussion->created_at->diffForHumans()}}</b>
+                            <b>{{$discussion->created_at->diffForHumans()}}</b>
                         </span>
-                        <a href="{{route('discussion.show', ['slug' => $discussion->slug])}}" class="btn btn-default pull-right"> V I E W </a>
+                        <a href="{{route('discussion.show', ['slug' => $discussion->slug])}}"
+                           class="btn btn-default pull-right"> V I E W </a>
                     </div>
                     <div class="panel-body">
                         <h4 class="text-center text-success">
                             {{$discussion->title}}
                         </h4>
                         <h5>
-                            {{str_limit($discussion->content, 150)}}
+                            {{ str_limit($discussion->content, 150) }}
                         </h5>
                     </div>
                     <div class="panel-footer">
@@ -53,5 +54,7 @@
         </div>
 
     </div>
+
+
 
 @endsection

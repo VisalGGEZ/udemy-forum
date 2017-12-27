@@ -31,4 +31,16 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Discussion');
     }
+
+    public function replies(){
+        return $this->hasMany('App\Reply');
+    }
+
+    public function likes(){
+        return $this->hasMany('App\Like');
+    }
+
+    public function watchDiscussions(){
+        return $this->hasMany('App\WatchDiscussion');
+    }
 }

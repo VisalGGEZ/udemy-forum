@@ -2,14 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Channel;
-use App\Discussion;
+use App\WatchDiscussion;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
-class DiscussionController extends Controller
+class WatchDiscussionController extends Controller
 {
+
+    public function watch($user_id, $discussion_id)
+    {
+        WatchDiscussion::create([
+            'user_id' => $user_id,
+            'discussion_id' => $discussion_id
+        ]);
+        return redirect()->back();
+    }
+
+    public function unwatch($user_id, $discussion_id)
+    {
+        $watchDiscussion = WatchDiscussion::where(['user_id' => $user_id, 'discussion_id' => $discussion_id])->first();
+        $watchDiscussion->delete();
+
+        return redirect()->back();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +42,7 @@ class DiscussionController extends Controller
      */
     public function create()
     {
-        return view('auth.discussion.create');
+        //
     }
 
     /**
@@ -38,17 +53,7 @@ class DiscussionController extends Controller
      */
     public function store(Request $request)
     {
-        Discussion::create([
-            'user_id' => Auth::user()->id,
-            'channel_id' => $request->channel_id,
-            'title' => $request->title,
-            'slug' => str_slug($request->title),
-            'content' => $request->contentDiscussion,
-        ]);
-
-        Session::flash('success', 'Discussion Created.');
-
-        return redirect()->back();
+        //
     }
 
     /**
@@ -57,15 +62,9 @@ class DiscussionController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        $discussion = Discussion::where('slug', $slug)->first();
-
-        return view('auth.discussion.show')->with('discussion', $discussion);
-    }
-
-    public function showByChannelId($id){
-        return view('auth.discussion.show-channel')->with('discussions', Discussion::where('channel_id', $id)->orderBy('created_at', 'desc')->paginate(3));
+        //
     }
 
     /**

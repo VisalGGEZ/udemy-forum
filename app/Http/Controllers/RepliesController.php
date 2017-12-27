@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Channel;
-use App\Discussion;
+use App\Reply;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
-class DiscussionController extends Controller
+class RepliesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +24,7 @@ class DiscussionController extends Controller
      */
     public function create()
     {
-        return view('auth.discussion.create');
+        //
     }
 
     /**
@@ -38,15 +35,11 @@ class DiscussionController extends Controller
      */
     public function store(Request $request)
     {
-        Discussion::create([
-            'user_id' => Auth::user()->id,
-            'channel_id' => $request->channel_id,
-            'title' => $request->title,
-            'slug' => str_slug($request->title),
-            'content' => $request->contentDiscussion,
+        Reply::create([
+            'user_id' => $request->user_id,
+            'discussion_id' => $request->discussion_id,
+            'content' => $request->contentReply
         ]);
-
-        Session::flash('success', 'Discussion Created.');
 
         return redirect()->back();
     }
@@ -57,15 +50,9 @@ class DiscussionController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        $discussion = Discussion::where('slug', $slug)->first();
-
-        return view('auth.discussion.show')->with('discussion', $discussion);
-    }
-
-    public function showByChannelId($id){
-        return view('auth.discussion.show-channel')->with('discussions', Discussion::where('channel_id', $id)->orderBy('created_at', 'desc')->paginate(3));
+        //
     }
 
     /**

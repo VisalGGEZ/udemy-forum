@@ -13,9 +13,9 @@ return [
             'scope' => [],
         ],
         'google' => [
-            'client_id' => '12345678',
-            'client_secret' => 'y0ur53cr374ppk3y',
-            'redirect_uri' => 'https://example.com/your/google/redirect',
+            'client_id' => '610752618936-gr6d1erlhpho1c3l8a22vh5ihdhc76ia.apps.googleusercontent.com',
+            'client_secret' => 'MYiq-zA8d2RteVjQdopUuWTz',
+            'redirect_uri' => 'http://udemy-forum.dev/google/redirect',
             'scope' => [],
         ],
         'github' => [

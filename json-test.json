@@ -1,4 +1,4 @@
-{
+[{
     "agiGain" : "1.5",
     "alignment" : "1",
     "armor" : "1.38",
@@ -225,3 +225,4 @@
     "strGain" : "2.4",
     "turnrate" : "1"
   }
+]
